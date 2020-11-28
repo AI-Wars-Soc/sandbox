@@ -1,6 +1,9 @@
 # Dockerfile for sandbox in which python 3 code is run
 FROM pypy:3
 
+# Get requirements to run scipy etc. on slim OSs
+RUN apt-get update && apt-get install libopenblas-dev gfortran -y
+
 WORKDIR /usr/src/app
 
 COPY pip-requirements.txt ./
