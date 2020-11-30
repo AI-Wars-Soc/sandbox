@@ -5,7 +5,7 @@ A single sandbox instance for user's submissions
 # Documentation
 
 ## Environment variables
- - `SANDBOX_PYPY_HEAPSIZE` and `SANDBOX_PYPY_TIMEOUT` give the parameters given to each PyPy instance
+ -  `SANDBOX_PYTHON_TIMEOUT` gives the total time that python is allowed to execute for. Eg. '10s'
 
 ## Running sandbox
 The sandbox will attempt to run '`/exec/main.py`'. Any OS calls are put into stdout, 
