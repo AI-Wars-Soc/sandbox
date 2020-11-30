@@ -10,7 +10,17 @@ RUN pip3 install --no-cache-dir -r pip-requirements.txt
 
 # Set up user
 RUN useradd --create-home --shell /bin/bash sandbox
-USER sandbox
 WORKDIR /home/sandbox
 
-CMD [ "sh", "-c", "python3 /exec/main.py" ]
+# Add run script
+COPY run.sh ./
+RUN chown sandbox run.sh \
+	&& chmod +x run.sh \
+	&& chmod -w run.sh \
+	&& ls -al ./
+
+# Set user before executing
+USER sandbox
+
+# Run with timeout
+CMD [ "sh", "-c", "timeout $SANDBOX_PYTHON_TIMEOUT ./run.sh" ]
