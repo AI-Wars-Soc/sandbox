@@ -4,9 +4,13 @@ FROM python:3
 # Get requirements to run scipy etc. on slim OSs
 RUN apt-get update && apt-get install libopenblas-dev gfortran -y
 
-WORKDIR /usr/src/app
-
+# Install python libraries
 COPY pip-requirements.txt ./
 RUN pip3 install --no-cache-dir -r pip-requirements.txt
+
+# Set up user
+RUN useradd --create-home --shell /bin/bash sandbox
+USER sandbox
+WORKDIR /home/sandbox
 
 CMD [ "sh", "-c", "python3 /exec/main.py" ]
