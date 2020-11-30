@@ -15,9 +15,8 @@ WORKDIR /home/sandbox
 # Add run script
 COPY run.sh ./
 RUN chown sandbox run.sh \
-	&& chmod +x run.sh \
-	&& chmod -w run.sh \
-	&& ls -al ./
+	&& chmod ugo+x run.sh \
+	&& chmod ugo-w run.sh \
 
 # Set user before executing
 USER sandbox
