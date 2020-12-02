@@ -9,7 +9,7 @@ COPY pip-requirements.txt ./
 RUN pip3 install --no-cache-dir -r pip-requirements.txt
 
 # Set up user
-RUN useradd --create-home --shell /bin/bash sandbox
+RUN useradd --create-home --shell /bin/bash sandbox --uid 1429
 WORKDIR /home/sandbox
 USER sandbox
 
