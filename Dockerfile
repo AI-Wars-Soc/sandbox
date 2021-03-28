@@ -9,8 +9,8 @@ RUN apt-get update && apt-get install -y cpulimit
 RUN apt-get update && apt-get install -y libopenblas-dev gfortran
 
 # Install python libraries
-COPY pip-requirements.txt ./
-RUN pip3 install --no-cache-dir -r pip-requirements.txt
+COPY requirements.txt ./
+RUN pip3 install --no-cache-dir -r requirements.txt
 
 # Set up user
 RUN useradd --create-home --shell /bin/bash sandbox --uid 1429
