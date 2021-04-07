@@ -9,8 +9,14 @@ RUN apt-get update && apt-get install -y cpulimit
 RUN apt-get update && apt-get install -y libopenblas-dev gfortran
 
 # Install python libraries
-COPY requirements.txt ./
-RUN pip3 install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir --upgrade pip
+RUN pip install --no-cache-dir numpy scipy
+RUN pip install --no-cache-dir chess
+RUN pip install --no-cache-dir --upgrade tensorflow
+RUN pip install --no-cache-dir scikit-learn pillow
+RUN pip install --no-cache-dir keras
+RUN pip install --no-cache-dir Theano
+RUN pip install --no-cache-dir Lasagne
 
 # Set up user
 RUN useradd --create-home --shell /bin/bash sandbox --uid 1429
