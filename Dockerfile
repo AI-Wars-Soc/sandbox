@@ -19,7 +19,7 @@ RUN pip install --no-cache-dir Theano
 RUN pip install --no-cache-dir Lasagne
 
 # Set up user
-RUN useradd --create-home --shell /bin/bash sandbox --uid 1429
+RUN useradd --create-home --shell /bin/bash sandbox
 WORKDIR /home/sandbox
 USER sandbox
 
