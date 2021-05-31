@@ -20,6 +20,11 @@ RUN pip install --no-cache-dir Lasagne
 
 # Set up user
 RUN useradd --create-home --shell /bin/bash sandbox
+
+# Remove write permissions
+RUN chown -R root /home/sandbox
+
+# Set user
 WORKDIR /home/sandbox
 USER sandbox
 
