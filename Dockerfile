@@ -10,19 +10,16 @@ RUN apt-get update && apt-get install -y libopenblas-dev gfortran
 
 # Install python libraries
 RUN pip install --no-cache-dir --upgrade pip
-RUN pip install --no-cache-dir numpy scipy
-RUN pip install --no-cache-dir chess
-RUN pip install --no-cache-dir --upgrade tensorflow
-RUN pip install --no-cache-dir scikit-learn pillow
-RUN pip install --no-cache-dir keras
-RUN pip install --no-cache-dir Theano
-RUN pip install --no-cache-dir Lasagne
+RUN pip install --no-cache-dir --upgrade numpy scipy tensorflow scikit-learn pillow keras Theano Lasagne
 
 # Set up user
-RUN useradd --create-home --shell /bin/bash sandbox
+RUN useradd --shell /bin/bash sandbox
 
-# Remove write permissions
-RUN chown -R root /home/sandbox
+# Remove write permissions from home/sandbox
+RUN mkdir /home/sandbox \
+&& chown -R root:root /home/sandbox \
+&& chmod u=rwx /home/sandbox \
+&& chmod go=rx /home/sandbox
 
 # Set user
 WORKDIR /home/sandbox
