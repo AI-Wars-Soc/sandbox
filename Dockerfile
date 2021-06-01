@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y libopenblas-dev gfortran
 # Install python libraries
 RUN pip install --no-cache-dir --upgrade pip
 RUN pip install --no-cache-dir --upgrade numpy scipy tensorflow scikit-learn pillow keras Theano Lasagne
+RUN pip install --no-cache-dir --upgrade chess
 
 # Set up user
 RUN useradd --shell /bin/bash sandbox
