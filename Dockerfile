@@ -14,13 +14,8 @@ RUN pip install --no-cache-dir --upgrade numpy scipy tensorflow scikit-learn pil
 RUN pip install --no-cache-dir --upgrade chess
 
 # Set up user
-RUN useradd --shell /bin/bash sandbox
-
-# Remove write permissions from home/sandbox
-RUN mkdir /home/sandbox \
-&& chown -R root:root /home/sandbox \
-&& chmod u=rwx /home/sandbox \
-&& chmod go=rx /home/sandbox
+RUN useradd --shell /bin/bash sandbox \
+&& useradd --no-create-home --shell /bin/bash read_only_user
 
 # Set user
 WORKDIR /home/sandbox
