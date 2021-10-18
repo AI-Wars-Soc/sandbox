@@ -1,5 +1,5 @@
 # Dockerfile for sandbox in which python 3 code is run
-FROM python:3-buster
+FROM python:3.8-buster
 
 RUN apt-get update \
 && apt-get install -y --no-install-recommends apt-utils \
